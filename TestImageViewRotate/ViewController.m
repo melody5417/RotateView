@@ -34,6 +34,23 @@
     // Update the view, if already loaded.
 }
 
+- (IBAction)onZoomin:(id)sender {
+    // setFrameCenterRotation只是更改了imageView的origin Size还是原宽高比 所以计算zoom会有问题
+    // 先 save Rotation 然后reset Rotation 更新frame 再restore Rotation
+//    CGFloat degrees = self.imageView.frameRotation;
+//
+//    [self.imageView setFrameCenterRotation:0];
+//    [self.imageView setFrame:NSMakeRect(newImageViewOrigin.x,
+//                                        newImageViewOrigin.y,
+//                                        newImageViewSize.width,
+//                                        newImageViewSize.height)];
+//    [self.imageView setFrameCenterRotation:degrees];
+}
+
+- (IBAction)onZoomout:(id)sender {
+    NSLog(@"zoomout layer:%@ imageView%@", self.imageView.layer, NSStringFromRect(self.imageView.frame));
+}
+
 - (IBAction)onRotate:(id)sender {
 
     if ([self.imageView.layer animationKeys]) {
